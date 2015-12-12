@@ -7,17 +7,7 @@ using namespace std;
 void display(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-	glBegin(GL_LINES);
-	glColor3d(1, 0, 0);
-	glVertex3d(0, 0, 0);
-	glVertex3d(1, 0, 0);
-	glColor3d(0, 1, 0);
-	glVertex3d(0, 0, 0);
-	glVertex3d(0, 1, 0);
-	glColor3d(0, 0, 1);
-	glVertex3d(0, 0, 0);
-	glVertex3d(0, 0, 1);
-	glEnd();
+	glutWireTeapot(1.0);
 	glFlush();
 }
 
@@ -27,6 +17,14 @@ void resize(int w, int h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-2, 2, -2, 2, -2, 2);
+}
+
+void keyin(unsigned char key, int x, int y)
+{
+	switch (key) {
+	case '\033':
+		exit(0);
+	}
 }
 
 void init(void)
@@ -41,6 +39,7 @@ int main(int argc, char** argv)
 	glutCreateWindow(argv[0]);
 	glutDisplayFunc(display);
 	glutReshapeFunc(resize);
+	glutKeyboardFunc(keyin);
 	init();
 	glutMainLoop();
 
