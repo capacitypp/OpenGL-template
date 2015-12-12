@@ -1,2 +1,2 @@
-# gpp-template
-g++ template
+# OpenGL-template
+OpenGL template
